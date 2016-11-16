@@ -1,0 +1,633 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="github," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Target 将项目从本地上传到远程仓库中
+
+[X]1、在本地建立新的工程，打开Git Bash 输入 git init 生成.git 文件，git status 可查看当前文件状态。Tips : 
+
+
+插入的图片可以上传到github中，找到该图片，点击右上角的raw,复制链接即可引用图片。
+注意到有untracked files即为未被追踪的档案
+
+2、使用 git add +filename">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github Exercise">
+<meta property="og:url" content="http://peggyqi.github.io/2016/05/23/githubexercise1/index.html">
+<meta property="og:site_name" content="Peri's Blog">
+<meta property="og:description" content="Target 将项目从本地上传到远程仓库中
+
+[X]1、在本地建立新的工程，打开Git Bash 输入 git init 生成.git 文件，git status 可查看当前文件状态。Tips : 
+
+
+插入的图片可以上传到github中，找到该图片，点击右上角的raw,复制链接即可引用图片。
+注意到有untracked files即为未被追踪的档案
+
+2、使用 git add +filename">
+<meta property="og:image" content="https://raw.githubusercontent.com/PeggyQi/gitresource/master/img1_githubexercise.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PeggyQi/gitresource/master/img2_githubexercise.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/PeggyQi/gitresource/master/img3_githubexercise.png">
+<meta property="og:updated_time" content="2016-05-24T01:45:59.810Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Github Exercise">
+<meta name="twitter:description" content="Target 将项目从本地上传到远程仓库中
+
+[X]1、在本地建立新的工程，打开Git Bash 输入 git init 生成.git 文件，git status 可查看当前文件状态。Tips : 
+
+
+插入的图片可以上传到github中，找到该图片，点击右上角的raw,复制链接即可引用图片。
+注意到有untracked files即为未被追踪的档案
+
+2、使用 git add +filename">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/PeggyQi/gitresource/master/img1_githubexercise.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title> Github Exercise | Peri's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Peri's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://peggyqi.github.io/2016/05/23/githubexercise1/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Peri">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avtar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Peri's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Peri's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Github Exercise
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>Target</strong> 将项目从本地上传到远程仓库中</p>
+<ul>
+<li>[X]<br>1、在本地建立新的工程，打开Git Bash 输入 <code>git init</code> 生成<strong>.git</strong> 文件，<code>git status</code> 可查看当前文件状态。<img src="https://raw.githubusercontent.com/PeggyQi/gitresource/master/img1_githubexercise.png" alt=""><br><strong>Tips</strong> : </li>
+</ul>
+<ul>
+<li>插入的图片可以上传到github中，找到该图片，点击右上角的<strong>raw</strong>,复制链接即可引用图片。</li>
+<li>注意到有<strong>untracked files</strong>即为未被追踪的档案</li>
+</ul>
+<p>2、使用 <code>git add</code> +filename 这个命令来让git追踪<br><img src="https://raw.githubusercontent.com/PeggyQi/gitresource/master/img2_githubexercise.png" alt=""><br>此时在查看文件状态，变成了 <code>changes to commit</code>这种状态叫做<strong>stage</strong> ,修改过但没使用<code>git add</code>的档案称为<strong>unstage</strong></p>
+<p><strong>Tips</strong>: </p>
+<ul>
+<li><code>git add .</code>命令可一次性将所有工作区中的文件加入到暂存区</li>
+<li><code>git add -i</code>命令可以在互动模式下选择你要加入的文件</li>
+</ul>
+<p>3、使用<code>git commit -m &#39;message&#39;</code>提交到版本库中</p>
+<p>4、在github中new repository。输入关联远程仓库命令 <code>git remote add origin git@github.com:username/repositoryname.git</code>,<br><code>git push -u origin master</code>本地项目就上传到了远程仓库中。</p>
+<p><strong>Tip</strong>:</p>
+<ul>
+<li>push命令之后出错，如下图：<br><img src="https://raw.githubusercontent.com/PeggyQi/gitresource/master/img3_githubexercise.png" alt=""><br>原因是新建repository时创建了readme.md文件，而本地文件没有，造成冲突。先<code>git pull origin master</code>,接着重新提交、push即可。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/github/" rel="tag"># github</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/17/first-blog/" rel="next" title="GithubPages建立Blog">
+                <i class="fa fa-chevron-left"></i> GithubPages建立Blog
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/08/prose/" rel="prev" title="读书笔记(散文)">
+                读书笔记(散文) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avtar.jpg"
+               alt="Peri" />
+          <p class="site-author-name" itemprop="name">Peri</p>
+          <p class="site-description motion-element" itemprop="description">比昨天进步一点</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Peri</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
